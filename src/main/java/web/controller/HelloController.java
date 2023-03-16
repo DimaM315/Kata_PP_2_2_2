@@ -28,10 +28,7 @@ public class HelloController {
 	@GetMapping(value = "/car")
 	public String printCar(@RequestParam(value = "count", required = false) Integer count,
 						   ModelMap model) {
-		count = (count == null) ? 0 : count;
-		List<Car> carList = carService.listCars();
-		count =  (0 <= count && count <= 5) ? count : 5;
-		model.addAttribute("cars", carList.subList(0, count));
+		model.addAttribute("cars", carService.listCars(count));
 		return "cars";
 	}
 }

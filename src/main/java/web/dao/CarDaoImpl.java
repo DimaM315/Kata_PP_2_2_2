@@ -17,7 +17,9 @@ public class CarDaoImpl implements  CarDao {
         carList.add(new Car("Polo", 14653, 218));
     }
     @Override
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCarList(Integer count) {
+        count = (count == null) ? 5 : count;
+        count =  (0 <= count && count <= 5) ? count : 5;
+        return carList.subList(0, count);
     }
 }
